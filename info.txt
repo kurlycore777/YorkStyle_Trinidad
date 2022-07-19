@@ -1,1 +1,8 @@
-Prueba clase de git
+
+
+WEBPACK: Determina que la aplicación por default carga desde root/src/index.js
+
+ES6: Import / Export
+CommonJS: require
+
+JSX: Extención de JS 
