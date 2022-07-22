@@ -8,6 +8,9 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
+
+import CardWidget from './CardWidget';
+
 function Header() {
     return (
         <>
@@ -27,6 +30,7 @@ function Header() {
                     </Typography>
                     <Button color="inherit">Inicio</Button>
                     <Button color="inherit">Login</Button>
+                    <CardWidget />
                 </Toolbar>
             </AppBar>
         </>

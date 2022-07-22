@@ -1,14 +1,12 @@
 import Header from './Components/Header.js'
+import ItemListContainer from './Components/ItemListContainer.js'
 
 function App() {
     return (
         <>
             <Header />
-            <div>
-                <p>
-                    contenido del sitio
-                </p>
-            </div>
+            <ItemListContainer greeting="¡Bienvenidos a YorkStyle!" />
+            
         </>
     )
 }
