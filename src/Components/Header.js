@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import Box from '@mui/material/Box';
 
 
 import CardWidget from './CardWidget';
@@ -28,8 +29,11 @@ function Header() {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         YorkStyle
                     </Typography>
-                    <Button color="inherit">Inicio</Button>
-                    <Button color="inherit">Login</Button>
+                    <Box sx={{ display: { xs: 'none', sm: 'flex', md: 'flex' } }}>
+                        <Button color="inherit">Inicio</Button>
+                        <Button color="inherit">Login</Button>
+                    </Box>
+                    {/* Card widget */}
                     <CardWidget />
                 </Toolbar>
             </AppBar>
