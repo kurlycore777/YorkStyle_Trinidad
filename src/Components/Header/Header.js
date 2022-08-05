@@ -10,7 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
 
 
-import CardWidget from './CardWidget';
+import CardWidget from '../CartWidget/CardWidget';
 
 function Header() {
     return (

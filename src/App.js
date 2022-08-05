@@ -1,5 +1,5 @@
-import Header from './Components/Header.js'
-import ItemListContainer from './Components/ItemListContainer.js'
+import Header from './Components/Header/Header.js'
+import ItemListContainer from './Components/Item/ItemListContainer.js'
 
 function App() {
     return (

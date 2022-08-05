@@ -7,11 +7,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 //Components
 import ItemCount from './ItemCount';
-import { customFetch } from '../Utils/customFetch';
+import { customFetch } from '../../Utils/customFetch';
 import ItemList from './ItemList';
+import ItemDetailContainer from './ItemDetailContainer';
 
 //Data
-import { productsData } from '../Data/productsData';
+import { productsData } from '../../Data/productsData';
 
 const ItemListContainer = (props) => {
 
@@ -28,7 +29,7 @@ const ItemListContainer = (props) => {
 
     return (
         <>
-            <Container maxWidth="lg" sx={{ mt: 5, mb: 5 }}>
+            <Container maxWidth="lg" sx={{ mt: 5 }}>
                 {/* Greeting */}
                 <Typography variant="h4" align='center' sx={{ fontWeight: 'bold' }}>
                     {props.greeting}
@@ -40,8 +41,19 @@ const ItemListContainer = (props) => {
                 </div>*/}
 
                 <div className="mt-3">
-                    {!loading && <div className="text-center"><CircularProgress /></div>}
-                    {loading && <ItemList listProducts={listProducts} />}
+                    {
+                        loading ? <ItemList listProducts={listProducts} />
+                            :
+                            <div className="text-center">
+                                <CircularProgress />
+                            </div>
+                    }
+                </div>
+            </Container>
+
+            <Container maxWidth="lg" sx={{ mt: 10, mb: 5 }}>
+                <div>
+                    <ItemDetailContainer />
                 </div>
             </Container>
         </>

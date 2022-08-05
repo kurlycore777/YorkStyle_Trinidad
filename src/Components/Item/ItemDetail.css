@@ -1,0 +1,5 @@
+.image__fixed{
+    position: sticky;
+    top:20px;
+    z-index: 999;
+}
