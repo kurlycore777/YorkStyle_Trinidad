@@ -17,7 +17,7 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PlaceIcon from '@mui/icons-material/Place';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import ReplayIcon from '@mui/icons-material/Replay';
-import { Button, IconButton } from '@mui/material';
+import { Button } from '@mui/material';
 
 function ItemDetail({ listProducts }) {
 
@@ -128,7 +128,8 @@ function ItemDetail({ listProducts }) {
                         {/* Stock */}
                         <div className="mt-3">
                             <Typography variant="body1" component="div" sx={{ color: 'rgba(0,0,0,.55)' }}>
-                                <span className='font-weight-bold' style={{ color: '#000' }}>Stock: </span>(5 disponibles)
+                                <span className='font-weight-bold' style={{ color: '#000' }}>
+                                    Stock: </span>({listProducts.stock} disponibles)
                             </Typography>
                         </div>
 
@@ -165,7 +166,7 @@ function ItemDetail({ listProducts }) {
 
                         {/* Wishlist */}
                         <div className="mt-3">
-                            <Button variant='outlined' onClick={() =>{
+                            <Button variant='outlined' onClick={() => {
                                 setWisthList(wishlist ? false : true)
                             }}>
                                 {wishlist ? <FavoriteIcon sx={{ mr: 1 }} />
