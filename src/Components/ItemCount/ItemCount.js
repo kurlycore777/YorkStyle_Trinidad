@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 //MUI
-import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -26,8 +26,13 @@ function ItemCount({ stock, initial }) {
 
     return (
         <>
-            <div>
-                <div className='border mx-auto' style={{ width: '170px', borderRadius: '5px' }}>
+            <div className='d-flex justify-content-start flex-wrap'>
+                <div className='my-auto mr-2'>
+                    <Typography variant="subtitle1" component="div">
+                        Cantidad: 
+                    </Typography>
+                </div>
+                <div className='border' style={{ width: '170px', borderRadius: '5px' }}>
                     <div className="d-flex justify-content-between">
                         <div>
                             <IconButton disabled={contador === initial} onClick={handleDisminuir} color="primary">
@@ -45,10 +50,6 @@ function ItemCount({ stock, initial }) {
                             </IconButton>
                         </div>
                     </div>
-                </div>
-
-                <div className='text-center mt-2'>
-                    <Button variant='outlined' disabled={stock === 0}>Agregar al carrito</Button>
                 </div>
             </div>
         </>

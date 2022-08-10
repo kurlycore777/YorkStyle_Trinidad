@@ -1,12 +1,23 @@
+//DOM
+import { Routes, Route } from 'react-router-dom'
+
+//Components
 import Header from './Components/Header/Header.js'
-import ItemListContainer from './Components/Item/ItemListContainer.js'
+import Footer from './Components/Footer/Footer.js'
+import ItemListContainer from './Components/ItemListContainer/ItemListContainer.js'
+import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer.js'
 
 function App() {
     return (
         <>
             <Header />
-            <ItemListContainer greeting="¡Bienvenidos a YorkStyle!" />
-            
+            <Routes>
+                <Route path='/' element={<ItemListContainer />}></Route>
+                <Route path='/categorias/:category' element={<ItemListContainer />}></Route>
+                <Route path='/producto/:id' element={<ItemDetailContainer />}></Route>
+            </Routes>
+            <Footer />
+
         </>
     )
 }

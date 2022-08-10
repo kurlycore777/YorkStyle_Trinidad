@@ -6,7 +6,7 @@ export const productsData = [
         price: 1335,
         stock: 10,
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        category: 'Alimento'
+        category: 'alimento'
     },
     {
         id: 2,
@@ -15,7 +15,7 @@ export const productsData = [
         price: 1500,
         stock: 10,
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        category: 'Alimento'
+        category: 'alimento'
     },
     {
         id: 3,
@@ -24,7 +24,7 @@ export const productsData = [
         price: 350,
         stock: 10,
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        category: 'Accesorios'
+        category: 'accesorios'
     },
     {
         id: 4,
@@ -33,7 +33,7 @@ export const productsData = [
         price: 249,
         stock: 10,
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        category: 'Accesorios'
+        category: 'accesorios'
     },
 ]
 

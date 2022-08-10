@@ -9,6 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
 
+import { Link } from 'react-router-dom'
+
 
 import CardWidget from '../CartWidget/CardWidget';
 
@@ -26,15 +28,19 @@ function Header() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        YorkStyle
-                    </Typography>
+                    <Link to='/' className='text-reset' style={{ flexGrow: 1, textDecoration: 'none' }}>
+                        <Typography variant="h6" component="div">
+                            YorkStyle
+                        </Typography>
+                    </Link>
                     <Box sx={{ display: { xs: 'none', sm: 'flex', md: 'flex' } }}>
-                        <Button color="inherit">Inicio</Button>
+                        <Button color="inherit" component={Link} to='/'>Inicio</Button>
                         <Button color="inherit">Login</Button>
                     </Box>
                     {/* Card widget */}
-                    <CardWidget />
+                    <Link to="" className='text-reset'>
+                        <CardWidget />
+                    </Link>
                 </Toolbar>
             </AppBar>
         </>

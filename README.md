@@ -1,3 +1,23 @@
+###  `npm install @mui/material @emotion/react @emotion/styled`
+
+Framework UI para mejor atractivo visual, contiene gran cantidad de componentes y es fácil de usar.
+
+###  `npm install @mui/icons-material`
+
+Liberia para iconos, fácil de usar y con gran variedad.
+
+###  `npm i react-image-gallery`
+
+Dependencia para añadir galeria de imagenes en el detalle del producto, fácil de implementar, contiene buen cantidad de documentación.
+
+###  `npm i react-router-dom`
+
+Es una librería de enrutamiento ligera y completa para la librería React JavaScript. 
+
+###  `npm i sass`
+
+Incluye SASS en el proyecto.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
