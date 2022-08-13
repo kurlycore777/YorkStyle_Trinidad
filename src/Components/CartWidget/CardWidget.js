@@ -5,7 +5,7 @@ import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import IconButton from '@mui/material/IconButton';
 
-function CardWidget() {
+const CardWidget = () => {
     return (
         <>
             <IconButton size="large" color="inherit">

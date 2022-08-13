@@ -10,7 +10,7 @@ import './Item.css'
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-function Item({ product }) {
+const Item = ({ product }) => {
     return (
         <>
             <div className='col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mt-4 card__'>
@@ -46,7 +46,9 @@ function Item({ product }) {
                             </div>
 
                             <div className="text-center mt-3">
-                                <Button LinkComponent={Link} to={`/producto/${product.id}`} variant='contained'>Ver detalles</Button>
+                                <Link to={`/producto/${product.id}`}>
+                                    <Button variant='contained'>Ver detalles</Button>
+                                </Link>
                             </div>
                         </div>
 

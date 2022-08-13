@@ -1,14 +1,19 @@
 import React, { useState } from 'react'
 
+//Router dom
+import { Link } from 'react-router-dom';
+
 //MUI
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { Button } from '@mui/material';
 
-function ItemCount({ stock, initial }) {
+const ItemCount = ({ stock, initial, onAdd, handleAlert }) => {
 
     const [contador, setContador] = useState(initial)
+    const [button, setButton] = useState(true)
 
     //Aumentar el contador
     const handleAumentar = () => {
@@ -24,34 +29,63 @@ function ItemCount({ stock, initial }) {
         }
     }
 
+    const handleConfirm = () => {
+        onAdd(contador)
+        setButton(false)
+        handleAlert(true)
+    }
+
     return (
         <>
-            <div className='d-flex justify-content-start flex-wrap'>
-                <div className='my-auto mr-2'>
-                    <Typography variant="subtitle1" component="div">
-                        Cantidad: 
-                    </Typography>
-                </div>
-                <div className='border' style={{ width: '170px', borderRadius: '5px' }}>
-                    <div className="d-flex justify-content-between">
-                        <div>
-                            <IconButton disabled={contador === initial} onClick={handleDisminuir} color="primary">
-                                <RemoveIcon />
-                            </IconButton>
+            {
+                button ?
+                    <div>
+                        {/* Contador */}
+                        <div className='d-flex justify-content-start flex-wrap mb-3'>
+                            <div className='my-auto mr-2'>
+                                <Typography variant="subtitle1" component="div">
+                                    Cantidad:
+                                </Typography>
+                            </div>
+                            <div className='border' style={{ width: '170px', borderRadius: '5px' }}>
+                                <div className="d-flex justify-content-between">
+                                    <div>
+                                        <IconButton disabled={contador === initial} onClick={handleDisminuir} color="primary">
+                                            <RemoveIcon />
+                                        </IconButton>
+                                    </div>
+
+                                    <div className='my-auto'>
+                                        {contador}
+                                    </div>
+
+                                    <div>
+                                        <IconButton disabled={contador === stock || stock === 0} onClick={handleAumentar} color="primary">
+                                            <AddIcon />
+                                        </IconButton>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div className='my-auto'>
-                            {contador}
-                        </div>
-
-                        <div>
-                            <IconButton disabled={contador === stock || stock === 0} onClick={handleAumentar} color="primary">
-                                <AddIcon />
-                            </IconButton>
-                        </div>
+                        <Button
+                            variant='contained'
+                            onClick={handleConfirm}
+                            sx={{ width: '100%', height: '50px' }}
+                        >
+                            Agregar al carrito
+                        </Button>
                     </div>
-                </div>
-            </div>
+                    :
+                    <Link to="/carrito">
+                        <Button
+                            variant='contained'
+                            sx={{ width: '100%', height: '50px' }}
+                        >
+                            Finalizar compra
+                        </Button>
+                    </Link>
+            }
         </>
     )
 }

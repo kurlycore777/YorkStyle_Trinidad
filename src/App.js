@@ -6,6 +6,7 @@ import Header from './Components/Header/Header.js'
 import Footer from './Components/Footer/Footer.js'
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer.js'
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer.js'
+import Cart from './Components/Cart/Cart.js'
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path='/' element={<ItemListContainer />}></Route>
                 <Route path='/categorias/:category' element={<ItemListContainer />}></Route>
                 <Route path='/producto/:id' element={<ItemDetailContainer />}></Route>
+                <Route path='/carrito' element={<Cart />}></Route>
             </Routes>
             <Footer />
 

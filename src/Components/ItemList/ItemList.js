@@ -3,7 +3,7 @@ import React from 'react'
 //Components
 import Item from '../Item/Item'
 
-function ItemList({ listProducts }) {
+const ItemList = ({ listProducts }) => {
 
     return (
         <>

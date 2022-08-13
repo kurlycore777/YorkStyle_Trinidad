@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
 
 import CardWidget from '../CartWidget/CardWidget';
 
-function Header() {
+const Header = () => {
     return (
         <>
             <AppBar position="static" style={{ background: '#ffff', color: '#000' }}>
@@ -38,7 +38,7 @@ function Header() {
                         <Button color="inherit">Login</Button>
                     </Box>
                     {/* Card widget */}
-                    <Link to="" className='text-reset'>
+                    <Link to="/carrito" className='text-reset'>
                         <CardWidget />
                     </Link>
                 </Toolbar>

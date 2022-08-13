@@ -53,7 +53,7 @@ const ItemListContainer = (props) => {
                     {
                         loading ? <ItemList listProducts={listProducts} />
                             :
-                            <div className="text-center">
+                            <div className="text-center my-5">
                                 <CircularProgress />
                             </div>
                     }

@@ -12,7 +12,7 @@ import ItemDetail from '../ItemDetail/ItemDetail'
 //MUI
 import CircularProgress from '@mui/material/CircularProgress';
 
-function ItemDetailContainer() {
+const ItemDetailContainer = () => {
 
     const [listProducts, setListProducts] = useState()
     const [loading, setLoading] = useState(false)

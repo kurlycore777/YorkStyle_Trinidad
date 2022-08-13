@@ -18,11 +18,18 @@ import PlaceIcon from '@mui/icons-material/Place';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import ReplayIcon from '@mui/icons-material/Replay';
 import { Button, Container } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 //Components
 import ItemCount from '../ItemCount/ItemCount';
 
-function ItemDetail({ listProducts }) {
+//Alert
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" color="info" {...props} />;
+});
+
+const ItemDetail = ({ listProducts }) => {
 
     const images = [
         {
@@ -33,6 +40,21 @@ function ItemDetail({ listProducts }) {
 
     //Wish list
     const [wishlist, setWisthList] = useState(false)
+
+    //Almacena la cantidad de ItemCount
+    const [cantidad, setCantidad] = useState(0)
+    const onAdd = (param) => {
+        setCantidad(param)
+    }
+
+    //Alert
+    const [alert, setAlert] = useState(false)
+    const handleCloseAlert = () =>{
+        setAlert(false)
+    }
+    const handleAlert = () => {
+        setAlert(true)
+    }
 
     return (
         <>
@@ -143,13 +165,9 @@ function ItemDetail({ listProducts }) {
                                 </Typography>
                             </div>
 
+                            {/* ItemCount */}
                             <div className="mt-3">
-                                <ItemCount stock={5} initial={1} />
-                            </div>
-
-                            {/* Button comprar ahora */}
-                            <div className="mt-3">
-                                <Button variant='contained' sx={{ width: '100%', height: '50px' }}>Comprar ahora</Button>
+                                <ItemCount stock={5} initial={1} cantidad={cantidad} onAdd={onAdd} handleAlert={handleAlert} />
                             </div>
 
                             {/* Devolución gratis */}
@@ -200,6 +218,13 @@ function ItemDetail({ listProducts }) {
                     </Typography>
                 </div>
             </Container>
+
+            {/* Alert con cantidad seleccionada */}
+            <Snackbar open={alert} autoHideDuration={3000} onClose={handleCloseAlert}>
+                <Alert onClose={handleCloseAlert} severity="success" sx={{ width: '100%' }}>
+                    Cantidad seleccionada: {cantidad}
+                </Alert>
+            </Snackbar>
         </>
     )
 }
