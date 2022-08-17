@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
 //CSS
 import './ItemDetail.css'
@@ -24,6 +24,9 @@ import MuiAlert from '@mui/material/Alert';
 //Components
 import ItemCount from '../ItemCount/ItemCount';
 
+
+import { CartContext } from '../../Context/CartContext';
+
 //Alert
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" color="info" {...props} />;
@@ -41,19 +44,21 @@ const ItemDetail = ({ listProducts }) => {
     //Wish list
     const [wishlist, setWisthList] = useState(false)
 
-    //Almacena la cantidad de ItemCount
-    const [cantidad, setCantidad] = useState(0)
-    const onAdd = (param) => {
-        setCantidad(param)
+    //context
+    const { isInCart, addItem } = useContext(CartContext)
+    const [cantidad, setCantidad] = useState(1)
+
+    const onAdd = () => {
+        isInCart(listProducts.id)
+        addItem(listProducts, cantidad)
+        setAlert(true)
     }
+
 
     //Alert
     const [alert, setAlert] = useState(false)
-    const handleCloseAlert = () =>{
+    const handleCloseAlert = () => {
         setAlert(false)
-    }
-    const handleAlert = () => {
-        setAlert(true)
     }
 
     return (
@@ -167,7 +172,12 @@ const ItemDetail = ({ listProducts }) => {
 
                             {/* ItemCount */}
                             <div className="mt-3">
-                                <ItemCount stock={5} initial={1} cantidad={cantidad} onAdd={onAdd} handleAlert={handleAlert} />
+                                <ItemCount
+                                    stock={listProducts.stock}
+                                    setCantidad={setCantidad}
+                                    cantidad={cantidad}
+                                    onAdd={onAdd}
+                                    initial={1} />
                             </div>
 
                             {/* Devolución gratis */}
@@ -220,9 +230,14 @@ const ItemDetail = ({ listProducts }) => {
             </Container>
 
             {/* Alert con cantidad seleccionada */}
-            <Snackbar open={alert} autoHideDuration={3000} onClose={handleCloseAlert}>
-                <Alert onClose={handleCloseAlert} severity="success" sx={{ width: '100%' }}>
-                    Cantidad seleccionada: {cantidad}
+            <Snackbar
+                open={alert}
+                autoHideDuration={3000}
+                onClose={handleCloseAlert}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+                <Alert onClose={handleCloseAlert} severity="success">
+                    Cantidad agregada al carrito: {cantidad}
                 </Alert>
             </Snackbar>
         </>

@@ -7,19 +7,21 @@ import Footer from './Components/Footer/Footer.js'
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer.js'
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer.js'
 import Cart from './Components/Cart/Cart.js'
+import MyProvider from './Context/CartContext.js'
 
 function App() {
     return (
         <>
-            <Header />
-            <Routes>
-                <Route path='/' element={<ItemListContainer />}></Route>
-                <Route path='/categorias/:category' element={<ItemListContainer />}></Route>
-                <Route path='/producto/:id' element={<ItemDetailContainer />}></Route>
-                <Route path='/carrito' element={<Cart />}></Route>
-            </Routes>
-            <Footer />
-
+            <MyProvider>
+                <Header />
+                <Routes>
+                    <Route path='/' element={<ItemListContainer />}></Route>
+                    <Route path='/categorias/:category' element={<ItemListContainer />}></Route>
+                    <Route path='/producto/:id' element={<ItemDetailContainer />}></Route>
+                    <Route path='/carrito' element={<Cart />}></Route>
+                </Routes>
+                <Footer />
+            </MyProvider>
         </>
     )
 }
