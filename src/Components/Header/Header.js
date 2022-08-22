@@ -34,7 +34,7 @@ const Header = () => {
                         </Typography>
                     </Link>
                     <Box sx={{ display: { xs: 'none', sm: 'flex', md: 'flex' } }}>
-                        <Button color="inherit" component={Link} to='/'>Inicio</Button>
+                        <Button color="inherit" component={Link} to='/' className='text-reset'>Inicio</Button>
                         <Button color="inherit">Login</Button>
                     </Box>
                     {/* Card widget */}

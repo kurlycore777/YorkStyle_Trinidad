@@ -1,0 +1,24 @@
+@media (max-width: 425.9px){
+    .prod_cart_flex{
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+
+    .prod_cart_img{
+        width: 65% !important;
+    }
+
+    .cart-empty{
+        width: 70% !important;
+    }
+
+    .prod-cart-info{
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 375.9px){
+    .prod_cart_img{
+        width: 80% !important;
+    }
+}

@@ -20,6 +20,7 @@ import ReplayIcon from '@mui/icons-material/Replay';
 import { Button, Container } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 //Components
 import ItemCount from '../ItemCount/ItemCount';
@@ -38,7 +39,23 @@ const ItemDetail = ({ listProducts }) => {
         {
             original: listProducts.image,
             thumbnail: listProducts.image,
-        }
+        },
+        {
+            original: listProducts.image1,
+            thumbnail: listProducts.image1,
+        },
+        {
+            original: listProducts.image2,
+            thumbnail: listProducts.image2,
+        },
+        {
+            original: listProducts.image3,
+            thumbnail: listProducts.image3,
+        },
+        {
+            original: listProducts.image4,
+            thumbnail: listProducts.image4,
+        },
     ];
 
     //Wish list
@@ -61,16 +78,18 @@ const ItemDetail = ({ listProducts }) => {
         setAlert(false)
     }
 
+    const matches = useMediaQuery('(max-width:425.9px)');
+
     return (
         <>
             <Container maxWidth="lg" sx={{ mt: 10, mb: 5 }}>
-                <Grid container spacing={2}>
+                <Grid container spacing={3}>
                     {/* Imagen del producto */}
                     <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
                         <div className="image__fixed">
                             <ImageGallery items={images} showPlayButton={false} useBrowserFullscreen={false}
-                                showFullscreenButton={false} thumbnailPosition="left" showNav={false}
-                                disableThumbnailSwipe={true} disableThumbnailScroll={true} />
+                                showFullscreenButton={false} thumbnailPosition={matches ? 'left' : 'bottom'} showNav={false}
+                                 disableThumbnailScroll={matches ? true : false} />
                         </div>
                     </Grid>
 

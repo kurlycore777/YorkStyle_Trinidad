@@ -7,6 +7,7 @@ const { Provider } = CartContext
 const MyProvider = ({ children }) => {
 
     const [cart, setCart] = useState([])
+    const [cantidad, setCantidad] = useState(1)
 
     //Verificar si el producto a agregar ya existe en el carrito
     const isInCart = (id) => {
@@ -25,6 +26,24 @@ const MyProvider = ({ children }) => {
             const productIndex = cart.indexOf(findProduct)
             const auxArray = [...cart]
             auxArray[productIndex].cantidad += cantidad
+            setCart(auxArray)
+        }
+        else {
+            setCart([...cart, newItem])
+        }
+    }
+
+    const removeItem = (item, cantidad) => {
+        const newItem = {
+            ...item,
+            cantidad
+        }
+
+        if (isInCart(newItem.id)) {
+            const findProduct = cart.find(param => param.id === newItem.id)
+            const productIndex = cart.indexOf(findProduct)
+            const auxArray = [...cart]
+            auxArray[productIndex].cantidad -= cantidad
             setCart(auxArray)
         }
         else {
@@ -53,7 +72,7 @@ const MyProvider = ({ children }) => {
     }
 
     return (
-        <Provider value={{ cart, isInCart, emptyCart, deleteItem, getItemQuantity, getItemPrice, addItem }}>
+        <Provider value={{ cart, isInCart, emptyCart, deleteItem, getItemQuantity, getItemPrice, addItem, removeItem, cantidad, setCantidad }}>
             {children}
         </Provider>
     )

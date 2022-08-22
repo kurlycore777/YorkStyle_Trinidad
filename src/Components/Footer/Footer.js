@@ -42,14 +42,14 @@ const Footer = () => {
                 {/* Section links */}
                 <section className='p-5 text-center'>
                     <Grid container spacing={4}>
-                        <Grid item xl={4} lg={4} md={6} sm={6}>
+                        <Grid item xl={4} lg={4} md={6} sm={6} sx={{mx: 'auto'}}>
                             <Typography variant="subtitle1" component="div" style={{ textTransform: 'uppercase', fontWeight: 'bold' }}>
                                 Lorem ipsum
                             </Typography>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eius numquam
                                 pariatur veritatis nobis, amet expedita inventore magnam libero vitae.</p>
                         </Grid>
-                        <Grid item xl={4} lg={4} md={6} sm={6}>
+                        <Grid item xl={4} lg={4} md={6} sm={6} sx={{mx: 'auto'}}>
                             <Typography variant="subtitle1" component="div" style={{ textTransform: 'uppercase', fontWeight: 'bold' }}>
                                 Lorem ipsum
                             </Typography>
@@ -59,7 +59,7 @@ const Footer = () => {
                                 <li>LINK</li>
                             </ul>
                         </Grid>
-                        <Grid item xl={4} lg={4} md={6} sm={6}>
+                        <Grid item xl={4} lg={4} md={6} sm={6} sx={{mx: 'auto'}}>
                             <Typography variant="subtitle1" component="div" style={{ textTransform: 'uppercase', fontWeight: 'bold' }}>
                                 Lorem ipsum
                             </Typography>

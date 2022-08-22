@@ -45,8 +45,8 @@ const Item = ({ product }) => {
                                 </Typography>
                             </div>
 
-                            <div className="text-center mt-3">
-                                <Link to={`/producto/${product.id}`}>
+                            <div className="text-center mt-3 card__button">
+                                <Link to={`/producto/${product.id}`} className='text-decoration-none'>
                                     <Button variant='contained'>Ver detalles</Button>
                                 </Link>
                             </div>
