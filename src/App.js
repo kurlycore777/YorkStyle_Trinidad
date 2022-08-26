@@ -1,11 +1,16 @@
+import { useEffect } from 'react'
+
 //DOM
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 //MUI
 import { createTheme, ThemeProvider } from '@mui/material'
 
 //provider
 import MyProvider from './Context/CartContext.js'
+
+//Firebase
+import '../src/Utils/Firebase/Firebase.js'
 
 //Components
 import Header from './Components/Header/Header.js'
@@ -21,7 +26,17 @@ const theme = createTheme({
     },
 });
 
+//Siempre top al navegar
+function useScrollToTop() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+}
+
 function App() {
+    useScrollToTop();
     return (
         <>
             <ThemeProvider theme={theme}>

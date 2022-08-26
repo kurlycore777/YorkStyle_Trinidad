@@ -3,3 +3,22 @@
     top:20px;
     z-index: 999;
 }
+
+@media (max-width: 599.9px){
+    .image__fixed{
+        width: 70%;
+        margin: auto;
+    }
+}
+
+@media (max-width: 510px){
+    .image__fixed{
+        width: 80%;
+    }
+}
+
+@media (max-width: 452px){
+    .image__fixed{
+        width: 100%;
+    }
+}

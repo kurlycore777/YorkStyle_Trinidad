@@ -3,14 +3,17 @@ import React, { useEffect, useState } from 'react'
 //Router dom
 import { useParams } from 'react-router-dom'
 
-import { customFetch } from '../../Utils/customFetch'
-import { productsData } from '../../Data/productsData'
-
 //Components
 import ItemDetail from '../ItemDetail/ItemDetail'
 
 //MUI
 import CircularProgress from '@mui/material/CircularProgress';
+
+//Firebase
+import { db } from '../../Utils/Firebase/Firebase';
+import { collection, getDoc, doc } from 'firebase/firestore';
+
+const productosCollection = collection(db, "productos")
 
 const ItemDetailContainer = () => {
 
@@ -19,9 +22,16 @@ const ItemDetailContainer = () => {
     const { id } = useParams()
 
     useEffect(() => {
-        customFetch(productsData).then(res => {
+        const referencia = doc(productosCollection, id)
+        const consulta = getDoc(referencia)
+
+        consulta
+        .then((resp) =>{
             setLoading(true)
-            setListProducts(res.find(item => item.id === parseInt(id)))
+            setListProducts(resp.data())
+        })
+        .catch((err) =>{
+            console.log(err)
         })
     }, [id])
 

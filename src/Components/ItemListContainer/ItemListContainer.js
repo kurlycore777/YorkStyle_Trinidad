@@ -12,11 +12,14 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ListIcon from '@mui/icons-material/List';
 
 //Components
-import { customFetch } from '../../Utils/customFetch';
 import ItemList from '../ItemList/ItemList';
 
-//Data
-import { productsData } from '../../Data/productsData';
+//Firebase
+import { db } from '../../Utils/Firebase/Firebase';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+
+const productosCollection = collection(db, "productos")
+
 
 const ItemListContainer = () => {
 
@@ -25,7 +28,46 @@ const ItemListContainer = () => {
     const { category } = useParams()
 
     useEffect(() => {
-        setLoading(false)
+
+        if (!category) {
+            const consulta = getDocs(productosCollection)
+    
+            consulta
+                .then(snapshot => {
+                    const producto = (snapshot.docs.map(doc => {
+                        return {
+                            ...doc.data(),
+                            id: doc.id
+                        }
+                    }))
+                    setLoading(true)
+                    setListProducts(producto)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
+        else {
+            const filtro = query(productosCollection, where("category", "==", category))
+            const consulta = getDocs(filtro)
+
+            consulta
+                .then(snapshot => {
+                    const producto = (snapshot.docs.map(doc => {
+                        return {
+                            ...doc.data(),
+                            id: doc.id
+                        }
+                    }))
+                    setLoading(true)
+                    setListProducts(producto)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
+
+        /*setLoading(false)
         customFetch(productsData).then(data => {
             if (category) {
                 setLoading(true)
@@ -35,7 +77,7 @@ const ItemListContainer = () => {
                 setLoading(true)
                 setListProducts(data)
             }
-        })
+        })*/
     }, [category])
 
     //Open menu para filtrar
@@ -98,7 +140,7 @@ const ItemListContainer = () => {
                     </ButtonGroup>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'end' }}>
+                <div style={{ display: 'flex', justifyContent: 'end', marginTop: '30px' }}>
                     <Button onClick={handleMenu}>Filtrar por <ListIcon sx={{ ml: 1.2 }} /></Button>
                     <Menu
                         id="basic-menu"
@@ -145,7 +187,7 @@ const ItemListContainer = () => {
                     </Menu>
                 </div>
 
-                <div className="mt-3">
+                <div>
                     {
                         loading ? <ItemList listProducts={listProducts} />
                             :

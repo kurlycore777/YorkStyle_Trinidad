@@ -48,14 +48,6 @@ const ItemDetail = ({ listProducts }) => {
             original: listProducts.image2,
             thumbnail: listProducts.image2,
         },
-        {
-            original: listProducts.image3,
-            thumbnail: listProducts.image3,
-        },
-        {
-            original: listProducts.image4,
-            thumbnail: listProducts.image4,
-        },
     ];
 
     //Wish list
@@ -78,7 +70,7 @@ const ItemDetail = ({ listProducts }) => {
         setAlert(false)
     }
 
-    const matches = useMediaQuery('(max-width:425.9px)');
+    const matches = useMediaQuery('(max-width:599.9px)');
 
     return (
         <>
@@ -89,7 +81,7 @@ const ItemDetail = ({ listProducts }) => {
                         <div className="image__fixed">
                             <ImageGallery items={images} showPlayButton={false} useBrowserFullscreen={false}
                                 showFullscreenButton={false} thumbnailPosition={matches ? 'left' : 'bottom'} showNav={false}
-                                 disableThumbnailScroll={matches ? true : false} />
+                                disableThumbnailSwipe={true} disableThumbnailScroll={true} />
                         </div>
                     </Grid>
 
@@ -253,7 +245,6 @@ const ItemDetail = ({ listProducts }) => {
                 open={alert}
                 autoHideDuration={3000}
                 onClose={handleCloseAlert}
-                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
             >
                 <Alert onClose={handleCloseAlert} severity="success">
                     Cantidad agregada al carrito: {cantidad}

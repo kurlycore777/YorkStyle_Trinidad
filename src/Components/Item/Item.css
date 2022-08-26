@@ -1,9 +1,27 @@
-.card__item{
+.card__item {
     height: 430px;
 }
 
-@media (max-width: 1199.5px){
-    .card__item{
+@media (max-width: 1199.5px) {
+    .card__item {
         height: auto;
+    }
+}
+
+.card__button__flex{
+    display: none;
+}
+
+@media (max-width: 425.9px) {
+    .card__button{
+        display: none;
+    }
+
+    .card__image{
+        width: 100% !important;
+    }
+
+    .card__button__flex{
+        display: block !important;
     }
 }

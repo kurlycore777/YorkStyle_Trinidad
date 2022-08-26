@@ -140,6 +140,9 @@ const Cart = () => {
                             {/* button para vaciar carrito */}
                             <Button variant="contained" onClick={() => {
                                 emptyCart()
+                                window.scrollTo({
+                                    top: 0,
+                                })
                             }}>Vaciar carrito</Button>
                             
                         </Grid>
