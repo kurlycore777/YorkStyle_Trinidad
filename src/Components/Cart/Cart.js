@@ -43,13 +43,11 @@ const Cart = () => {
                         {/* Articulos en carrito */}
                         <Grid item xl={8} lg={8} md={7} sm={12} xs={12} sx={{ mt: 5 }}>
                             {cart.map(prod => (
-                                <div key={prod.id} className="prod_cart">
+                                <div key={prod} className="prod_cart">
                                     <div className="d-flex justify-content-start prod_cart_flex">
                                         {/* Imagen del producto */}
                                         <div className="mr-3 text-center">
-                                            <Link to={`/producto/${prod.id}`}>
-                                                <img className='prod_cart_img' src={prod.image} width="100" alt={prod.title} />
-                                            </Link>
+                                            <img className='prod_cart_img' src={prod.image} width="100" alt={prod.title} />
                                         </div>
 
                                         {/* Información del producto */}
@@ -84,7 +82,7 @@ const Cart = () => {
                                                                 onClick={() => {
                                                                     setLoading(true)
                                                                     setTimeout(() => {
-                                                                        isInCart(prod.id)
+                                                                        isInCart(prod.title)
                                                                         removeItem(prod, cantidad)
                                                                         setLoading(false)
                                                                     }, 1200)
@@ -105,7 +103,7 @@ const Cart = () => {
                                                                 onClick={() => {
                                                                     setLoading(true)
                                                                     setTimeout(() => {
-                                                                        isInCart(prod.id)
+                                                                        isInCart(prod.title)
                                                                         addItem(prod, cantidad)
                                                                         setLoading(false)
                                                                     }, 1200)
@@ -124,7 +122,7 @@ const Cart = () => {
                                                 color="error"
                                                 size="small"
                                                 onClick={() => {
-                                                    deleteItem(prod.id)
+                                                    deleteItem(prod.title)
                                                 }}
                                                 sx={{ mt: 2 }}
                                             >
@@ -144,7 +142,7 @@ const Cart = () => {
                                     top: 0,
                                 })
                             }}>Vaciar carrito</Button>
-                            
+
                         </Grid>
                         {/* Fin Articulos en carrito */}
 

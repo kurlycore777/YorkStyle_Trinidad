@@ -10,8 +10,8 @@ const MyProvider = ({ children }) => {
     const [cantidad, setCantidad] = useState(1)
 
     //Verificar si el producto a agregar ya existe en el carrito
-    const isInCart = (id) => {
-        return cart.some(param => param.id === id)
+    const isInCart = (title) => {
+        return cart.some(param => param.title === title)
     }
 
     //
@@ -21,8 +21,8 @@ const MyProvider = ({ children }) => {
             cantidad
         }
 
-        if (isInCart(newItem.id)) {
-            const findProduct = cart.find(param => param.id === newItem.id)
+        if (isInCart(newItem.title)) {
+            const findProduct = cart.find(param => param.title === newItem.title)
             const productIndex = cart.indexOf(findProduct)
             const auxArray = [...cart]
             auxArray[productIndex].cantidad += cantidad
@@ -39,8 +39,8 @@ const MyProvider = ({ children }) => {
             cantidad
         }
 
-        if (isInCart(newItem.id)) {
-            const findProduct = cart.find(param => param.id === newItem.id)
+        if (isInCart(newItem.title)) {
+            const findProduct = cart.find(param => param.title === newItem.title)
             const productIndex = cart.indexOf(findProduct)
             const auxArray = [...cart]
             auxArray[productIndex].cantidad -= cantidad
@@ -57,8 +57,8 @@ const MyProvider = ({ children }) => {
     }
 
     //Borra un producto del carrito
-    const deleteItem = (id) => {
-        return setCart(cart.filter(param => param.id !== id))
+    const deleteItem = (title) => {
+        return setCart(cart.filter(param => param.title !== title))
     }
 
     //Obtener la cantidad de unidades del carrito

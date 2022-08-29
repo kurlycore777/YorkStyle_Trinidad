@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 //MUI
 import {
     Button, Container, FormControl, Grid, TextField, Typography, Card, CardContent,
-    List, ListItemText, ListItem, Divider, Breadcrumbs, InputAdornment, Avatar, Box
+    List, ListItemText, ListItem, Divider, Breadcrumbs, InputAdornment, Avatar, Box, CircularProgress, Backdrop
 } from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import PersonIcon from '@mui/icons-material/Person';
@@ -18,9 +18,14 @@ import { CartContext } from '../../Context/CartContext'
 //Router dom
 import { useNavigate, Link } from 'react-router-dom'
 
+//Firebase
+import { db } from '../../Utils/Firebase/Firebase';
+import { collection, addDoc, serverTimestamp } from "firebase/firestore"
+
 const Checkout = () => {
 
     const { cart, getItemPrice, getItemQuantity } = useContext(CartContext)
+    const [loading, setLoading] = useState(false)
 
     const [customer, setCustomer] = useState({
         name: '',
@@ -44,9 +49,25 @@ const Checkout = () => {
             products: cart,
             buyer: { ...customer },
             total: getItemPrice(),
+            date: serverTimestamp()
         }
 
-        console.log(order)
+        const ordersCollection = collection(db, "orders")
+        const consulta = addDoc(ordersCollection, order)
+
+        consulta
+            .then((res) => {
+                setLoading(true)
+                setTimeout(() =>{
+                    setLoading(false)
+                    setTimeout(() =>{
+                        alert(`Orden ${res.id} creada con exito!`)
+                    }, 500)
+                }, 1000)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     //Contador regresivo
@@ -108,6 +129,7 @@ const Checkout = () => {
                                         value={customer.name}
                                         onChange={onChange}
                                         label="Nombre(s)"
+                                        required
                                         InputProps={{
                                             startAdornment: (
                                                 <InputAdornment position="start">
@@ -126,6 +148,7 @@ const Checkout = () => {
                                         value={customer.lastname}
                                         onChange={onChange}
                                         label="Apellidos"
+                                        required
                                         InputProps={{
                                             startAdornment: (
                                                 <InputAdornment position="start">
@@ -146,6 +169,7 @@ const Checkout = () => {
                                         value={customer.email}
                                         onChange={onChange}
                                         label="Correo electrónico"
+                                        required
                                         InputProps={{
                                             startAdornment: (
                                                 <InputAdornment position="start">
@@ -165,6 +189,7 @@ const Checkout = () => {
                                         value={customer.phone}
                                         onChange={onChange}
                                         label="Teléfono"
+                                        required
                                         InputProps={{
                                             startAdornment: (
                                                 <InputAdornment position="start">
@@ -184,6 +209,7 @@ const Checkout = () => {
                                         value={customer.address}
                                         onChange={onChange}
                                         label="Dirección"
+                                        required
                                         InputProps={{
                                             startAdornment: (
                                                 <InputAdornment position="start">
@@ -265,6 +291,13 @@ const Checkout = () => {
                     </Grid>
                 </Grid>
             </Container>
+
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={loading}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </>
     )
 }
