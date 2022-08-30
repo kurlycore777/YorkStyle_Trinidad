@@ -6,3 +6,30 @@ ES6: Import / Export
 CommonJS: require
 
 JSX: Extención de JS 
+
+/*setLoading(false)
+        customFetch(productsData).then(data => {
+            if (category) {
+                setLoading(true)
+                setListProducts(data.filter(prod => prod.category === category))
+            }
+            else {
+                setLoading(true)
+                setListProducts(data)
+            }
+        })*/
+
+confirmAlert({
+                            title: '¡Gracias por tu compra!',
+                            message: `Número de orden: ${res.id}, en breve recibiras un 
+                            correo electrónico con la información de tu pedido `,
+                            buttons: [
+                                {
+                                    label: 'Aceptar',
+                                    onClick: returnHome
+                                },
+                            ],
+                            onClickOutside: returnHome,
+                            onKeypress: returnHome,
+                            onKeypressEscape: returnHome,
+                        });

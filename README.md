@@ -1,90 +1,40 @@
-###  `npm install @mui/material @emotion/react @emotion/styled`
+# YorkStyle
 
-Framework UI para mejor atractivo visual, contiene gran cantidad de componentes y es fácil de usar.
+YorkStyle es un proyecto Ecommerce realizado durante el curso de Coderhouse, utilizando el framework de React JS y la base de datos de Firebase (Firestore).
 
-###  `npm install @mui/icons-material`
+![Tux, the Linux mascot](/src/Assets/Resources/demo.png)
 
-Liberia para iconos, fácil de usar y con gran variedad.
+![Tux, the Linux mascot](/src/Assets/Resources/Demo_1.png)
 
-###  `npm i react-image-gallery`
+![Tux, the Linux mascot](/src/Assets/Resources/demo_2.png)
 
-Dependencia para añadir galeria de imagenes en el detalle del producto, fácil de implementar, contiene buen cantidad de documentación.
+## Demo
 
-###  `npm i react-router-dom`
+[https://york-style-trinidad.vercel.app/](https://york-style-trinidad.vercel.app/)
 
-Es una librería de enrutamiento ligera y completa para la librería React JavaScript. 
+#### 1. Clonar el respositorio
 
-###  `npm i sass`
+#### 2. Instalar dependencias
 
-Incluye SASS en el proyecto.
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
+```
+npm install
+```
 
 ### `npm start`
+Para arrancar el proyecto en servidor local
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Librerias usadas
+- [MUI](https://mui.com/)
+`npm install @mui/material @emotion/react @emotion/styled`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Firebase](https://firebase.google.com/) 
+`npm i firebase`
 
-### `npm test`
+- [react-image-gallery](https://www.npmjs.com/package/react-image-gallery) 
+`npm i react-image-gallery`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [react router dom](https://v5.reactrouter.com/web/guides/quick-start) 
+`npm i react-router-dom`
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [MUI Icons](https://mui.com/material-ui/getting-started/installation/)
+`npm install @mui/icons-material`

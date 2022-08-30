@@ -21,7 +21,7 @@ import { CartContext } from '../../Context/CartContext';
 
 const Cart = () => {
 
-    const { cart, deleteItem, addItem, isInCart, removeItem, getItemPrice, getItemQuantity, cantidad, emptyCart } = useContext(CartContext)
+    const { cart, deleteItem, addItem, isInCart, removeItem, getItemPrice, getItemQuantity, cantidad } = useContext(CartContext)
 
     const [loading, setLoading] = useState(false);
 
@@ -135,20 +135,13 @@ const Cart = () => {
                                     <Divider sx={{ my: 4 }} />
                                 </div>
                             ))}
-                            {/* button para vaciar carrito */}
-                            <Button variant="contained" onClick={() => {
-                                emptyCart()
-                                window.scrollTo({
-                                    top: 0,
-                                })
-                            }}>Vaciar carrito</Button>
 
                         </Grid>
                         {/* Fin Articulos en carrito */}
 
                         {/* Orden */}
                         <Grid item xl={4} lg={4} md={5} sm={12} xs={12} sx={{ mt: 5 }}>
-                            {/* border */}
+                            
                             <div className="border p-3" style={{ borderRadius: '5px', boxShadow: '0 2px 4px 2px rgb(0 0 0 / 20%)' }}>
                                 <h4 className="text-center text-sm-center text-md-left">Tu orden</h4>
                                 {/* Lista de articulos */}
@@ -212,7 +205,6 @@ const Cart = () => {
                                 </Typography>
 
                             </div>
-                            {/* Fin border */}
 
                         </Grid>
                         {/* Fin Orden */}

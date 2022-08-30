@@ -58,9 +58,9 @@ const Checkout = () => {
         consulta
             .then((res) => {
                 setLoading(true)
-                setTimeout(() =>{
+                setTimeout(() => {
                     setLoading(false)
-                    setTimeout(() =>{
+                    setTimeout(() => {
                         alert(`Orden ${res.id} creada con exito!`)
                     }, 500)
                 }, 1000)
@@ -70,7 +70,6 @@ const Checkout = () => {
             })
     }
 
-    //Contador regresivo
     const [timeLeft, setTimeLeft] = useState(5);
     const navigate = useNavigate();
     timeLeft > 0 && setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -80,23 +79,21 @@ const Checkout = () => {
             navigate("/")
         }, 5000)
         return (
-            <>
-                <Container maxWidth="lg" sx={{ mt: 20, mb: 20 }}>
-                    <Card sx={{ width: '60%', mx: 'auto', py: 5 }}>
-                        <CardContent>
-                            <Typography variant="h5" textAlign={'center'}>
-                                ¡Uy! algo salió mal...
-                            </Typography>
-                            <Typography variant="h5" textAlign={'center'} sx={{ mt: 5 }} gutterBottom>
-                                Redirigiendo a la página principal:
-                            </Typography>
-                            <Typography variant="h5" textAlign={'center'}>
-                                {timeLeft}
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </Container>
-            </>
+            <Container maxWidth="lg" sx={{ mt: 20, mb: 20 }}>
+                <Card sx={{ width: '60%', mx: 'auto', py: 5 }}>
+                    <CardContent>
+                        <Typography variant="h5" textAlign={'center'}>
+                            ¡Uy! algo salió mal...
+                        </Typography>
+                        <Typography variant="h5" textAlign={'center'} sx={{ mt: 5 }} gutterBottom>
+                            Redirigiendo a la página principal:
+                        </Typography>
+                        <Typography variant="h5" textAlign={'center'}>
+                            {timeLeft}
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </Container>
         )
     }
 

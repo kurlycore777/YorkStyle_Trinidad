@@ -38,21 +38,19 @@ function useScrollToTop() {
 function App() {
     useScrollToTop();
     return (
-        <>
-            <ThemeProvider theme={theme}>
-                <MyProvider>
-                    <Header />
-                    <Routes>
-                        <Route path='/' element={<ItemListContainer />}></Route>
-                        <Route path='/categorias/:category' element={<ItemListContainer />}></Route>
-                        <Route path='/producto/:id' element={<ItemDetailContainer />}></Route>
-                        <Route path='/carrito' element={<Cart />}></Route>
-                        <Route path='/checkout' element={<Checkout />}></Route>
-                    </Routes>
-                    <Footer />
-                </MyProvider>
-            </ThemeProvider>
-        </>
+        <ThemeProvider theme={theme}>
+            <MyProvider>
+                <Header />
+                <Routes>
+                    <Route path='/' element={<ItemListContainer />}></Route>
+                    <Route path='/categorias/:category' element={<ItemListContainer />}></Route>
+                    <Route path='/producto/:id' element={<ItemDetailContainer />}></Route>
+                    <Route path='/carrito' element={<Cart />}></Route>
+                    <Route path='/checkout' element={<Checkout />}></Route>
+                </Routes>
+                <Footer />
+            </MyProvider>
+        </ThemeProvider>
     )
 }
 

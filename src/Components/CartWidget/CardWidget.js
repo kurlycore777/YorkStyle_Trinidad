@@ -13,13 +13,11 @@ const CardWidget = () => {
     const { getItemQuantity } = useContext(CartContext)
 
     return (
-        <>
-            <IconButton size="large" color="inherit">
-                <Badge badgeContent={getItemQuantity()} color="primary">
-                    <ShoppingCartIcon />
-                </Badge>
-            </IconButton>
-        </>
+        <IconButton size="large" color="inherit">
+            <Badge badgeContent={getItemQuantity()} color="primary">
+                <ShoppingCartIcon />
+            </Badge>
+        </IconButton>
     )
 }
 
