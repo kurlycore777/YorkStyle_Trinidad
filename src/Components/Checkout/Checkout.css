@@ -1,0 +1,22 @@
+.resumen__compra {
+    width: 62%;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
+}
+
+@media (max-width: 991.5px){
+    .resumen__compra{
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 425.9px){
+    .resumen__orden{
+        flex-wrap: wrap !important;
+    }
+
+    .resumen__orden img{
+        margin: 0 auto 20px auto;
+    }
+}

@@ -3,7 +3,8 @@ import React, { useContext, useState } from 'react'
 //MUI
 import {
     Button, Container, FormControl, Grid, TextField, Typography, Card, CardContent,
-    List, ListItemText, ListItem, Divider, Breadcrumbs, InputAdornment, Avatar, Box, CircularProgress, Backdrop
+    List, ListItemText, ListItem, Divider, Breadcrumbs, InputAdornment, Avatar, Box, CircularProgress,
+    Backdrop, AppBar, Toolbar, IconButton
 } from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import PersonIcon from '@mui/icons-material/Person';
@@ -11,6 +12,11 @@ import GroupIcon from '@mui/icons-material/Group';
 import HomeIcon from '@mui/icons-material/Home';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
+import Dialog from '@mui/material/Dialog';
+import CloseIcon from '@mui/icons-material/Close';
+
+//CSS
+import './Checkout.css'
 
 //Context
 import { CartContext } from '../../Context/CartContext'
@@ -24,7 +30,14 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 
 const Checkout = () => {
 
-    const { cart, getItemPrice, getItemQuantity } = useContext(CartContext)
+    const [dialog, setDialog] = useState(false);
+    const handleClose = () => {
+        setDialog(false);
+        emptyCart()
+        navigate('/')
+    };
+
+    const { cart, getItemPrice, getItemQuantity, emptyCart } = useContext(CartContext)
     const [loading, setLoading] = useState(false)
 
     const [customer, setCustomer] = useState({
@@ -41,6 +54,8 @@ const Checkout = () => {
             [e.target.name]: e.target.value
         })
     }
+
+    const [val, setVal] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -61,7 +76,8 @@ const Checkout = () => {
                 setTimeout(() => {
                     setLoading(false)
                     setTimeout(() => {
-                        alert(`Orden ${res.id} creada con exito!`)
+                        setVal(res.id)
+                        setDialog(true)
                     }, 500)
                 }, 1000)
             })
@@ -288,6 +304,76 @@ const Checkout = () => {
                     </Grid>
                 </Grid>
             </Container>
+
+            <Dialog
+                open={dialog}
+                onClose={handleClose}
+                fullScreen
+            >
+                <AppBar position="static">
+                    <Toolbar sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                        <IconButton
+                            size="large"
+                            edge="end"
+                            color="inherit"
+                            onClick={handleClose}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+                <Container maxWidth="lg" sx={{ mt: 5, mb: 4 }}>
+                    <div className="border p-4 resumen__compra">
+                        <Typography variant="h4" align='center' gutterBottom>¡Muchas gracias por tu compra!</Typography>
+                        <Typography
+                            variant='subtitle1'
+                            align='center'
+                            gutterBottom
+                        >
+                            Tú número de pedido es: <span style={{ fontWeight: 'bold' }}>{val}</span>, En breve recibiras un correo electrónico
+                            con la información de tu pedido.
+                        </Typography>
+                        <Divider sx={{ my: 3 }} />
+                        <Typography variant='h6' gutterBottom>Resumen de compra: </Typography>
+                        <div>
+                            {cart.map(res => (
+                                <>
+                                    <Box className='resumen__orden' sx={{ display: 'flex', justifyContent: 'flex-start', mt: 3 }}>
+                                        <img src={res.image} width='150' alt={res.image} className="my-auto" />
+                                        <div className='my-auto'>
+                                            <Typography variant='subtitle1' sx={{ fontWeight: 'bold' }}>{res.title}</Typography>
+                                            <Typography variant='subtitle1'>Cantidad: {res.cantidad}</Typography>
+                                            <Typography variant='subtitle1'>Precio unitario: <span style={{ color: 'green' }}>{res.price}</span></Typography>
+                                        </div>
+                                    </Box>
+                                    <Divider sx={{ my: 3 }} />
+                                </>
+                            ))}
+                        </div>
+                        <List disablePadding>
+                            <ListItem className="px-0 py-0">
+                                <ListItemText primary={"Articulos (" + getItemQuantity() + ")"} />
+                                <Typography className="text-success" variant="body2">{"$" + getItemPrice() + ".00"}</Typography>
+                            </ListItem>
+
+                            <ListItem className="px-0 py-0">
+                                <ListItemText primary="Envío" />
+                                <Typography className="text-success" variant="body2">Gratis</Typography>
+                            </ListItem>
+
+                            <ListItem className="px-0 py-0">
+                                <ListItemText primary="Total + envío" />
+                                <Typography variant="subtitle1" className="font-weight-bold">
+                                    ${getItemPrice()}.00
+                                </Typography>
+                            </ListItem>
+                        </List>
+                    </div>
+                    <div style={{ textAlign: 'center', margin: '20px 0 0 0 ' }}>
+                        <Button variant='contained' onClick={handleClose}>Aceptar</Button>
+                    </div>
+                </Container>
+            </Dialog>
 
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
